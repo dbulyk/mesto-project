@@ -7,14 +7,14 @@
   <meta name="keywords" content="HTML5, CSS">
   <meta name="author" content="Булыкин Дмитрий">
   <link rel='stylesheet' href="./pages/index.css">
-  <title>Путешествия по России</title>
+  <title>Mesto</title>
 </head>
 <body class="page">
   <header class="header">
     <div class="header__logo"></div>
   </header>
   <main class="content">
-    <div class="profile">
+    <section class="profile">
       <img src="./images/Avatar.svg" alt="Аватар пользователя" class="profile__avatar">
       <div class="profile-info">
         <h1 class="profile-info__name">Жак-Ив Кусто</h1>
@@ -22,7 +22,39 @@
         <p class="profile-info__desription">Исследователь океана</p>
       </div>
       <button class="profile__add-btn"></button>
-    </div>
+    </section>
+    <section class="elements">
+      <div class="element">
+        <img src="./images/photos/photo1.jpg" alt="Фото" class="element__photo">
+        <p class="element__title">Карачаевск</p>
+        <button class="element__like"></button>
+      </div>
+      <div class="element">
+        <img src="./images/photos/photo2.jpg" alt="Фото" class="element__photo">
+        <p class="element__title">Гора Эльбрус</p>
+        <button class="element__like"></button>
+      </div>
+      <div class="element">
+        <img src="./images/photos/photo3.jpg" alt="Фото" class="element__photo">
+        <p class="element__title">Домбай</p>
+        <button class="element__like"></button>
+      </div>
+      <div class="element">
+        <img src="./images/photos/photo4.jpg" alt="Фото" class="element__photo">
+        <p class="element__title">Гора Эльбрус</p>
+        <button class="element__like"></button>
+      </div>
+      <div class="element">
+        <img src="./images/photos/photo5.jpg" alt="Фото" class="element__photo">
+        <p class="element__title">Домбай</p>
+        <button class="element__like"></button>
+      </div>
+      <div class="element">
+        <img src="./images/photos/photo6.jpg" alt="Фото" class="element__photo">
+        <p class="element__title">Карачаево-Черкесия</p>
+        <button class="element__like"></button>
+      </div>
+    </section>
   </main>
   <footer class="footer">
     <p class="footer__author">&COPY; 2021 Mesto Russia</p>
