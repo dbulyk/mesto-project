@@ -1,7 +1,13 @@
 .elements {
-  margin: 46.25px 200px 0;
+  margin: 50px 0 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 20px 17px;
+  justify-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .elements {
+    margin: 36px 0 0;
+  }
 }

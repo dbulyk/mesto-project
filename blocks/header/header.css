@@ -5,9 +5,9 @@
 }
 
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 1070px) {
   .header {
-    margin: 28px 0 38.25px;
+    margin: 28px 0 38px;
     min-height: 55px;
   }
 }

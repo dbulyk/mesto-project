@@ -1,5 +1,13 @@
 .profile-info {
   margin-left: 30px;
-  display: flex;
-  
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+}
+
+@media screen and (max-width: 1070px) {
+  .profile-info {
+    margin-left: 0;
+    grid-template-columns: 220px 1fr;
+  }
 }
