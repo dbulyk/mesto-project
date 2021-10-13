@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,27 @@
   <link rel='stylesheet' href="./pages/index.css">
   <title>Mesto</title>
 </head>
+
 <body class="page">
   <header class="header">
     <div class="header__logo"></div>
   </header>
   <main class="content">
+    <section class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="form">
+          <fieldset class="form__fieldset">
+            <input type="text" class="form__item form__item_el_heading" name="name" value="Жак-Ив Кусто">
+            <input type="text" class="form__item form__item_el_desc" name="description" value="Исследователь океана">
+          </fieldset>
+          <fieldset class="form__fieldset form__handlers"></fieldset>
+        </form>
+        <fieldset class="form__handlers">
+          <button type="submit" class="form__save-btn btn">Сохранить</button>
+        </fieldset>
+      </div>
+    </section>
     <section class="profile">
       <img src="./images/Avatar.svg" alt="Аватар пользователя" class="profile__avatar">
       <div class="profile-info">
@@ -21,17 +38,8 @@
         <button class="profile-info__edit-btn btn"></button>
         <p class="profile-info__description">Исследователь океана</p>
       </div>
-      <button class="profile__add-btn btn">
-      <div class="popup">
-        <div class="popup__container">
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="form">
-            <fieldset class="form__fieldset"></fieldset>
-            <fieldset class="form__fieldset"></fieldset>
-          </form>
-        </div>
+      <button class="profile__add-btn btn"></button>
       </div>
-      </button>
     </section>
     <section class="elements">
       <div class="element">
@@ -82,4 +90,5 @@
     <p class="footer__author">&COPY; 2021 Mesto Russia</p>
   </footer>
 </body>
+
 </html>

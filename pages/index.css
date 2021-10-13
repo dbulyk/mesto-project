@@ -17,6 +17,16 @@
 @import url("../blocks/profile-info/__edit-btn/profile-info__edit-btn.css");
 @import url("../blocks/profile-info/__name/profile-info__name.css");
 
+/* Popup */
+@import url("../blocks/popup/popup.css");
+@import url("../blocks/popup/__container/popup__container.css");
+@import url("../blocks/form/__save-btn/form__save-btn.css");
+@import url("../blocks/popup/__title/popup__title.css");
+@import url("../blocks/form/form.css");
+@import url("../blocks/form/__fieldset/form__fieldset.css");
+@import url("../blocks/form/__handlers/form__handlers.css");
+@import url("../blocks/form/__item/form__item.css");
+
 /* Elements */
 @import url("../blocks/elements/elements.css");
 @import url("../blocks/element/element.css");
