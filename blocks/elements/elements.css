@@ -1,9 +1,5 @@
 .elements {
   margin: 50px 0 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 20px 17px;
-  justify-items: center;
 }
 
 @media screen and (max-width: 1024px) {
