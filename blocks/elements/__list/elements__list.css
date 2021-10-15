@@ -1,9 +1,23 @@
 .elements__list {
+  display: grid;
+  grid-template-columns: repeat(3, 280px);
+  gap: 20px 17px;
   list-style: none;
   padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 20px 17px;
+  margin: 0 auto;
   justify-items: center;
+  width: fit-content;
 }
+
+@media screen and (max-width: 1280px) {
+  .elements__list {
+    grid-template-columns: repeat(2, 280px);
+  }
+}
+
+@media screen and (max-width: 616px) {
+  .elements__list {
+    grid-template-columns: 280px;
+  }
+}
+
