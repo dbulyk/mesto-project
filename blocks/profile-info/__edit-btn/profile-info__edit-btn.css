@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 1070px) {
   .profile-info__edit-btn {
-    margin-left: 10px;
+    margin-left: 0;
     width: 18px;
     height: 18px;
   }
