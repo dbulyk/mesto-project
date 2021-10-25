@@ -42,11 +42,6 @@ const inputUrlPic = document.querySelector('.form__item_el_url');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  popup.addEventListener('click', function(evt) {
-    if (Event.target === Event.currentTarget) {
-      closePopup(evt.target);
-    }
-  })
   const btnPopupClose = document.querySelector('.popup_opened').addEventListener('click', function(evt) {
     closePopup(evt.target.parentNode.parentNode);
   })
