@@ -1,73 +1,108 @@
-const btnLike = document.querySelector('.element__like');
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+  ];
+
 const btnEdit = document.querySelector('.profile-info__edit-btn');
 const btnAdd = document.querySelector('.profile__add-btn');
-const popup = document.querySelector('.popup');
-const btnPopupClose = document.querySelector('.popup__close');
+const btnDelete = document.querySelector('.element__delete');
+const popupEditProfile = document.querySelector('.popup_edit');
+const popupAddPic = document.querySelector('.popup_add-pic');
 const profileName = document.querySelector('.profile-info__name');
 const profileDesc = document.querySelector('.profile-info__description');
-const formElement = document.querySelector('.form');
+const formEdit = document.querySelector('.form_edit');
+const formAdd = document.querySelector('.form_add');
 const inputProfileName = document.querySelector('.form__item_el_heading');
 const inputProfileDesc = document.querySelector('.form__item_el_desc');
 const elements = document.querySelector('.elements__list');
 const inputNamePic = document.querySelector('.form__item_el_namePic');
 const inputUrlPic = document.querySelector('.form__item_el_url');
 
-function openPopup() {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', function(evt) {
+    if (Event.target === Event.currentTarget) {
+      closePopup(evt.target);
+    }
+  })
+  const btnPopupClose = document.querySelector('.popup_opened').addEventListener('click', function(evt) {
+    closePopup(evt.target.parentNode.parentNode);
+  })
 }
 
-function closePopup() {
-  popup.classList.remove('popup_opened');
+function closePopup(popup) {
+  return popup.classList.remove('popup_opened');
 }
 
-function formSubmitHandler (evt) {
+function formEditSubmitHandler (evt) {
   evt.preventDefault();
   profileName.textContent = inputProfileName.value;
   profileDesc.textContent = inputProfileDesc.value;
-  closePopup();
+  closePopup(evt.target.parentNode.parentNode);
 }
-formElement.addEventListener('submit', formSubmitHandler);
+formEdit.addEventListener('submit', formEditSubmitHandler);
+
+function formAddSubmitHandler (evt) {
+  evt.preventDefault();
+  addPic(inputNamePic.value, inputUrlPic.value);
+  closePopup(evt.target.parentNode.parentNode);
+}
+formAdd.addEventListener('submit', formAddSubmitHandler);
 
 btnEdit.addEventListener('click', function() {
   inputProfileName.value = profileName.innerText;
   inputProfileDesc.value = profileDesc.innerText;
-  openPopup();
+  openPopup(popupEditProfile);
 })
 
-btnPopupClose.addEventListener('click', function() {
-  closePopup();
+btnAdd.addEventListener('click', function() {
+  openPopup(popupAddPic);
 })
 
-popup.addEventListener('click', function() {
-  if (Event.target === Event.currentTarget) {
-    closePopup();
-  }
-})
+
+
+
 
 function addPic(inputNamePic, inputUrlPic) {
-  const element = document.createElement('li');
-  element.classList.add('element');
-  const elementPicture = document.createElement('img');
-  elementPicture.classList.add('element__photo');
-  elementPicture.src = inputUrlPic;
-  elementPicture.alt = "Фото"
-  const elementDescription = document.createElement('div');
-  elementDescription.classList.add('element__description');
-  const elementTitle = document.createElement('p');
-  elementTitle.classList.add('element__title');
-  elementTitle.textContent = inputNamePic;
-  const elementLikeBtn = document.createElement('button');
-  elementLikeBtn.classList.add('element__like btn');
-  elementLikeBtn.type = 'button';
-  elements.insertAdjacentHTML('afterbegin', `
-  <li class="element">
-    <img src="${inputUrlPic}" alt="Фото" class="element__photo">
-    <div class="element__description">
-      <p class="element__title">${inputNamePic}</p>
-      <button type="button" class="element__like btn"></button>
-    </div>
-  </li>
-  `)}
+  const elementTemplate = document.querySelector('#element-template').content;
+  const picElement = elementTemplate.querySelector('.element').cloneNode(true);
+
+  picElement.querySelector('.element__photo').src = inputUrlPic;
+  picElement.querySelector('.element__title').textContent = inputNamePic;
+  picElement.querySelector('.element__like').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('element__like_active');
+  })
+  picElement.querySelector('.element__delete').addEventListener('click', function(evt) {
+    evt.target.parentNode.remove();
+  })
+  return elements.prepend(picElement);
+}
+
+initialCards.forEach(function(item) {
+  return addPic(item.name, item.link);
+})
 
 
 
