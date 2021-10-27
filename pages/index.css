@@ -40,6 +40,13 @@
 @import url("../blocks/element/__like/_active/element__like_active.css");
 @import url("../blocks/element/__delete/element__delete.css");
 
+/* Figure */
+@import url("../blocks/popup/_figure/popup_figure.css");
+@import url("../blocks/popup/__container/_figure/popup__container_figure.css");
+@import url("../blocks/figure/figure.css");
+@import url("../blocks/figure/__caption/figure__caption.css");
+@import url("../blocks/figure/__pic/figure__pic.css");
+
 
 /* Footer */
 @import url("../blocks/footer/footer.css");

@@ -28,15 +28,23 @@ const initialCards = [
 const btnEdit = document.querySelector('.profile-info__edit-btn');
 const btnAdd = document.querySelector('.profile__add-btn');
 const btnDelete = document.querySelector('.element__delete');
+
 const popupEditProfile = document.querySelector('.popup_edit');
 const popupAddPic = document.querySelector('.popup_add-pic');
+
+const popupPhoto = document.querySelector('.popup_figure');
+const popupPhotoPic = document.querySelector('.figure__pic');
+const popupPhotoDesc = document.querySelector('.figure__caption');
+
 const profileName = document.querySelector('.profile-info__name');
 const profileDesc = document.querySelector('.profile-info__description');
 const formEdit = document.querySelector('.form_edit');
 const formAdd = document.querySelector('.form_add');
 const inputProfileName = document.querySelector('.form__item_el_heading');
 const inputProfileDesc = document.querySelector('.form__item_el_desc');
+
 const elements = document.querySelector('.elements__list');
+const elementPhoto = document.querySelector('.element__photo');
 const inputNamePic = document.querySelector('.form__item_el_namePic');
 const inputUrlPic = document.querySelector('.form__item_el_url');
 
@@ -76,10 +84,6 @@ btnAdd.addEventListener('click', function() {
   openPopup(popupAddPic);
 })
 
-
-
-
-
 function addPic(inputNamePic, inputUrlPic) {
   const elementTemplate = document.querySelector('#element-template').content;
   const picElement = elementTemplate.querySelector('.element').cloneNode(true);
@@ -91,6 +95,11 @@ function addPic(inputNamePic, inputUrlPic) {
   })
   picElement.querySelector('.element__delete').addEventListener('click', function(evt) {
     evt.target.parentNode.remove();
+  })
+  picElement.querySelector('.element__photo').addEventListener('click', function(evt) {
+    popupPhotoPic.src = evt.target.currentSrc;
+    popupPhotoDesc.textContent = evt.target.nextSibling.parentNode.innerText;
+    openPopup(popupPhoto);
   })
   return elements.prepend(picElement);
 }
