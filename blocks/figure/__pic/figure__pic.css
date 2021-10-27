@@ -1,7 +1,7 @@
 .figure__pic {
   width: 100%;
-  max-width: 80vw;
-  max-height: 80vh;
+  max-width: 75vw;
+  max-height: 75vh;
   object-fit: contain;
   margin: 0 0 10px;
 }
