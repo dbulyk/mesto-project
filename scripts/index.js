@@ -22,45 +22,31 @@ const elementPhoto = document.querySelector('.element__photo');
 const inputNamePic = document.querySelector('.form__item_el_namePic');
 const inputUrlPic = document.querySelector('.form__item_el_url');
 
+const openPopup = (popup) => popup.classList.add('popup_opened');
+const closePopup = (popup) => popup.classList.remove('popup_opened');
+const renderCard = (picElement) => elements.prepend(picElement);
 
-
-[].forEach.call(btnPopupClose, function(buttonClose) {
-  buttonClose.addEventListener('click', function() {
-    return closePopup(buttonClose.parentNode.parentNode);
-  })
-})
-
-function openPopup(popup) {
-  return popup.classList.add('popup_opened');
-}
-
-function closePopup(popup) {
-  return popup.classList.remove('popup_opened');
-}
-
-function editFormSubmitHandler (evt) {
+const editFormSubmitHandler = (evt) => {
   evt.preventDefault();
   profileName.textContent = inputProfileName.value;
   profileDesc.textContent = inputProfileDesc.value;
   return closePopup(evt.target.parentNode.parentNode);
 }
 
-function addFormSubmitHandler (evt) {
+const addFormSubmitHandler = (evt) => {
   evt.preventDefault();
   const card = createCard(inputNamePic.value, inputUrlPic.value);
   renderCard(card);
   return closePopup(evt.target.parentNode.parentNode);
 }
 
-btnEdit.addEventListener('click', function() {
+btnEdit.addEventListener('click', () => {
   inputProfileName.value = profileName.innerText;
   inputProfileDesc.value = profileDesc.innerText;
   return openPopup(popupEditProfile);
 })
 
-btnAdd.addEventListener('click', function() {
-  return openPopup(popupAddPic);
-})
+
 
 function createCard(inputNamePic, inputUrlPic) {
   const elementTemplate = document.querySelector('#element-template').content;
@@ -69,13 +55,13 @@ function createCard(inputNamePic, inputUrlPic) {
   picElement.querySelector('.element__photo').src = inputUrlPic;
   picElement.querySelector('.element__photo').alt = "Фото";
   picElement.querySelector('.element__title').textContent = inputNamePic;
-  picElement.querySelector('.element__like').addEventListener('click', function(evt) {
+  picElement.querySelector('.element__like').addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__like_active');
   })
-  picElement.querySelector('.element__delete').addEventListener('click', function(evt) {
+  picElement.querySelector('.element__delete').addEventListener('click', (evt) => {
     evt.target.parentNode.remove();
   })
-  picElement.querySelector('.element__photo').addEventListener('click', function(evt) {
+  picElement.querySelector('.element__photo').addEventListener('click', (evt) => {
     popupPhotoPic.src = evt.target.currentSrc;
     popupPhotoPic.alt = "Фото";
     popupPhotoDesc.textContent = evt.target.nextSibling.parentNode.innerText;
@@ -84,16 +70,16 @@ function createCard(inputNamePic, inputUrlPic) {
   return picElement;
 }
 
-function renderCard(picElement) {
-  return elements.prepend(picElement);
-}
+btnPopupClose.forEach((buttonClose) => {
+  buttonClose.addEventListener('click', () => closePopup(buttonClose.parentNode.parentNode))
+});
 
-initialCards.forEach(function(item) {
+initialCards.forEach((item) => {
  const card = createCard(item.name, item.link);
  return renderCard(card);
 })
 
-
+btnAdd.addEventListener('click', () => openPopup(popupAddPic));
 formEdit.addEventListener('submit', editFormSubmitHandler);
 formAdd.addEventListener('submit', addFormSubmitHandler);
 
